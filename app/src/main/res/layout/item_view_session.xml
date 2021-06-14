@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="musicSession"
+        type="com.doublesymetrymusic.domain.model.MusicSession" />
+  </data>
+
+  <com.google.android.material.card.MaterialCardView
+      android:id="@+id/v_parent"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:background="?android:attr/selectableItemBackground"
+      app:cardCornerRadius="10dp"
+      app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <ImageView
+          android:id="@+id/ivArtwork"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:foreground="@drawable/bg_artwork"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintDimensionRatio="H,1:1"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:loadRemoteImage="@{musicSession.artworkUrl}" />
+
+      <TextView
+          android:id="@+id/tvGenres"
+          style="@style/style_12_normal"
+          android:layout_width="0dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginBottom="9dp"
+          android:text="@{musicSession.genresString}"
+          android:textColor="@color/white"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          tools:text="Genre1, Genre2, Genre3" />
+
+      <TextView
+          style="@style/style_16_medium"
+          android:layout_width="0dp"
+          android:text="@{musicSession.name}"
+          android:textColor="@color/white"
+          app:layout_constraintBottom_toTopOf="@id/tvGenres"
+          app:layout_constraintEnd_toEndOf="@id/tvGenres"
+          app:layout_constraintStart_toStartOf="@id/tvGenres"
+          tools:text="name" />
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:background="@drawable/bg_listeners"
+          android:gravity="center"
+          android:orientation="horizontal"
+          android:paddingStart="6dp"
+          android:paddingTop="3dp"
+          android:paddingEnd="6dp"
+          android:paddingBottom="3dp"
+          app:layout_constraintStart_toStartOf="@id/tvGenres"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_listenericon" />
+
+        <TextView
+            style="@style/style_11_medium"
+            android:layout_marginStart="2dp"
+            android:text="@{musicSession.listenersCount}"
+            android:textColor="@color/black"
+            tools:text="219" />
+      </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </com.google.android.material.card.MaterialCardView>
+</layout>

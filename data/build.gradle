@@ -1,0 +1,67 @@
+plugins {
+  id 'com.android.library'
+  id 'kotlin-android'
+  id 'kotlinx-serialization'
+}
+
+android {
+  compileSdkVersion compile_sdk_version
+  buildToolsVersion "30.0.3"
+
+  defaultConfig {
+    minSdkVersion min_sdk_version
+    targetSdkVersion target_sdk_version
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    debug {
+      buildConfigField "String", "BASE_API", '"https://www.mocky.io/v2/"'
+    }
+
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+      buildConfigField "String", "BASE_API", '"https://www.mocky.io/v2/"'
+    }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+}
+
+dependencies {
+  implementation project(":domain")
+
+  // Coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+  // paging
+  implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+  // koin
+  implementation "org.koin:koin-core:$koin_version"
+
+  // retrofit & okhttp
+  implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+  implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+  implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+
+  // kotlinx-serialization
+  implementation"com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+  implementation"org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1"
+
+  // test
+  testImplementation "junit:junit:$junit_version"
+  testImplementation "io.mockk:mockk:$mockk_version"
+  testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_test_version"
+}
