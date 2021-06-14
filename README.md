@@ -40,6 +40,13 @@ Each module contains a set of unit tests
 
 
 ## Code
+### Base Fragment 
+
+[**BaseFragment**](https://github.com/oth-libs/DoubleSymetryMusic/blob/master/app/src/main/java/com/doublesymetrymusic/BaseFragment.kt)
+
+this BaseFragment takes ```<BINDING : ViewDataBinding, VIEW_MODEL : BaseViewModel>``` and injects the ViewModel automatically and binds it with the view, this way the Fragments won't need to worry about injecting ViewModels.
+
+### Data Source helpers 
 
 [**SourceResultHolder**](https://github.com/oth-libs/DoubleSymetryMusic/blob/master/domain/src/main/java/com/doublesymetrymusic/domain/datasource/DataSourceResultHolder.kt)
 
@@ -66,4 +73,6 @@ All of these files can be put together with Retrofit services (and Room eventual
 ## Demo
 
 <https://www.dropbox.com/s/eie7iwgvwazgik5/ds.webm> 
+
+
 
