@@ -11,6 +11,7 @@ import com.doublesymetrymusic.domain.model.MusicSession
 import com.doublesymetrymusic.extensions.setup
 import com.doublesymetrymusic.presentation.homepage.AdapterType
 import com.doublesymetrymusic.presentation.homepage.HomePageViewModel
+import com.doublesymetrymusic.utils.COLUMN_COUNT
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -48,8 +49,8 @@ class HomePageFragment : BaseFragment<FragmentHomepageBinding, HomePageViewModel
 
     binding.rvSongs.setup(
       animateItems = true,
-      columnCount = 2,
-      customSpanSize = { position -> if (position == musicSessionsPageAdapter.itemCount && musicSessionsLoadStateAdapter.itemCount > 0) 2 else 1 }
+      columnCount = COLUMN_COUNT,
+      customSpanSize = { position -> if (position == musicSessionsPageAdapter.itemCount && musicSessionsLoadStateAdapter.itemCount > 0) COLUMN_COUNT else 1 }
     )
     // set paging adapter
     setupForPaging()
