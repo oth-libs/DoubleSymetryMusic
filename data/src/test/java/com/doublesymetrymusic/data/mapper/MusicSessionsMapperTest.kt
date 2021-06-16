@@ -11,7 +11,7 @@ class MusicSessionsMapperTest {
   private val mapper: Mapper<MusicSessionsData, MusicSessions> = MusicSessionsMapper()
 
   @Test
-  fun testBookDataEqualsDomain() {
+  fun testMapper() {
     val expected = DataFactory.musicSessions
 
     // When
